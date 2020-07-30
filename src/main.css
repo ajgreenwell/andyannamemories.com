@@ -1,0 +1,175 @@
+:root {
+  font-size: 16px;
+  --container-padding: calc(30px + 5vw);
+  --primary-color: rgb(96, 197, 231);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:focus {
+  outline: none;
+}
+
+.container {
+  padding: 0 var(--container-padding);
+}
+
+#navbar {
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 50px;
+  color: white;
+  font-size: 1.5rem;
+  height: 2.5rem;
+}
+
+#nav-left {
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#nav-left >* {
+  margin-right: 10px;
+}
+
+#nav-right {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#nav-right >* {
+  margin-left: 7vw;
+}
+
+.nav-item {
+  color: inherit;
+  text-decoration: none;
+  transition: color .1s;
+}
+
+.nav-item:hover {
+  color: rgba(255, 255, 255, .7);
+}
+
+#nav-left > div {
+  font-weight: bold;
+}
+
+@keyframes icon-squish {
+  50%       { transform: scale(.85, 1.15) }
+  100% { transform: scale(1, 1) }
+}
+
+#nav-left:hover > #logo {
+  animation: icon-squish 0.5s ease-in-out 0s infinite forwards;
+}
+
+#nav-menu-toggle {
+  display: none;
+  position: relative;
+  z-index: 2;
+}
+
+.nav-button {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 3px;
+  padding: 4px 7px;
+  font-size: 2.5rem;
+}
+
+.nav-button-fixed {
+  position: fixed;
+  top: 43px;
+  right: var(--container-padding);
+}
+
+#nav-menu {
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, .8);
+  backdrop-filter: blur(5px);
+  padding: 40px var(--container-padding);
+  display: flex;
+  flex-direction: column;
+}
+
+#nav-menu > .nav-item {
+  font-size: 4rem;
+  margin-bottom: 3rem;
+  width: 80%;
+}
+
+#nav-menu > .nav-item:hover {
+  color: var(--primary-color);
+}
+
+[id*="-location"] {
+  position: relative;
+  bottom: 20px;
+}
+
+@keyframes slide-fade-in {
+  0%   { transform: translateY(100px); opacity: 0; }
+  100% { transform: translateY(0px); opacity: 1; }
+}
+
+#about {
+  background: linear-gradient(var(--primary-color), var(--primary-color), var(--primary-color), white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 75px var(--container-padding) 250px;
+  color: white;
+}
+
+#about-header {
+  text-align: center;
+  font-size: 4rem;
+  margin-bottom: 30px;
+  animation: slide-fade-in 1s ease-out 0s 1;
+}
+
+#about-subheader {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-top: 0;
+  animation: slide-fade-in 1s ease-out 0s 1;
+}
+
+@media screen and (max-width: 715px) {
+  :root {
+    font-size: 2.2vw;
+  }
+
+  #about {
+    padding-top: calc(5vw + 35px);
+  }
+
+  #nav-menu-toggle {
+    display: inline-block;
+  }
+
+  #nav-left {
+    width: 80%;
+  }
+  
+  #nav-right {
+    display: none;
+  }
+}
