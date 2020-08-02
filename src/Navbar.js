@@ -7,12 +7,12 @@ export default function Navbar() {
     <div id="navbar" className="container">
       <div id="nav-left">
         <i id="logo" className="fas fa-brain"></i>
-        <div>MyMemories Editor</div>
+        <div>My Memories</div>
       </div>
       <div id="nav-right">
         <a href="#photo-slideshow-location" className="nav-item">photos</a>
-        <a href="#clean-memories-location" className="nav-item">clean</a>
-        <a href="#dirty-memories-location" className="nav-item">dirty</a>
+        <a href="#public-memories-location" className="nav-item">public</a>
+        <a href="#private-memories-location" className="nav-item">private</a>
       </div>
       <NavMenuToggle />
     </div>
