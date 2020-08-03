@@ -43,6 +43,43 @@ h2 {
   opacity: 100%;
 }
 
+.error-banner {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  padding: 0 2rem;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100vw;
+  background-color: red;
+  color: white;
+  font-size: 1.25rem;
+}
+
+.error-banner-text {
+  margin-right: 3rem;
+}
+
+.error-banner-button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: inherit;
+}
+
+.error-banner-icon {
+  font-size: 2rem;
+  transition: opacity .1s;
+}
+
+.error-banner-icon:hover {
+  cursor: pointer;
+  opacity: 70%;
+}
+
 #navbar {
   background-color: var(--primary-color);
   display: flex;
@@ -80,11 +117,11 @@ h2 {
 .nav-item {
   color: inherit;
   text-decoration: none;
-  transition: color .1s;
+  transition: opacity .1s;
 }
 
 .nav-item:hover {
-  color: rgba(255, 255, 255, .7);
+  opacity: 70%;
 }
 
 #nav-left > div {
@@ -174,6 +211,79 @@ h2 {
   font-size: 1.8rem;
   margin-top: 0;
   animation: slide-fade-in 1s ease-out 0s 1;
+}
+
+#login-portal {
+  text-align: center;
+  margin-bottom: 16rem;
+  padding: 0 var(--container-padding);
+}
+
+#login-header {
+  font-size: 3rem;
+  margin-top: 4rem;
+}
+
+#login-subheader {
+  font-size: 1.5rem;
+  width: 70vw;
+  margin: 0 auto;
+}
+
+#login-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 70vw;
+  margin: 3rem auto;
+}
+
+#password-label {
+  margin: 0;
+  font-size: 2rem;
+}
+
+#password-field {
+  font-size: 1.5rem;
+  margin-left: 2rem;
+  padding: 1rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 10px;
+}
+
+#login-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2rem;
+  font-size: 1.5rem;
+  padding: 1rem;
+  border-radius: 10px;
+  color: white;
+  background: var(--secondary-color);
+  border: none;
+  box-shadow: 0 1px 5px rgb(0, 0, 0, .1), 0 -1px 5px rgb(0, 0, 0, .1);
+  transition: transform .15s, box-shadow .15s;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+}
+
+#login-button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    box-shadow: 0 1px 10px rgb(0, 0, 0, .1), 0 -1px 10px rgb(0, 0, 0, .1);
+}
+
+#login-button:active {
+  transform: scale(1);
+  box-shadow: 0 1px 5px rgb(0, 0, 0, .1), 0 -1px 5px rgb(0, 0, 0, .1);
+}
+
+.login-icon {
+  margin-right: 1rem;
 }
 
 #photo-slideshow {
@@ -308,6 +418,12 @@ h2 {
   color: var(--color);
 }
 
+@keyframes squish-in {
+  0% {transform: scaleY(0)}
+  80% {transform: scaleY(1.1)}
+  100% {transform: scaleY(1)}
+}
+
 .memory {
   font-size: 1.25rem;
   line-height: 2rem;
@@ -316,13 +432,14 @@ h2 {
   border-radius: 10px;
   margin-bottom: 2rem;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1), 0 -1px 5px rgb(0, 0, 0, .1);
+  animation: squish-in .2s ease-out 0s 1;
 }
 
 .memory-text {
   margin: 0;
 }
 
-[id*=memory-input-] {
+.memory-input {
   box-sizing: border-box;
   width: 100%;
   height: 8rem;
@@ -335,6 +452,53 @@ h2 {
   border-radius: 5px;
   padding: 1rem;
   resize: none;
+}
+
+.memory-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.memory-buttons-left, .memory-buttons-right {
+  width: 50%;
+  display: flex;
+}
+
+.memory-buttons-right .memory-button-icon {
+  margin-right: 0;
+}
+
+.memory-buttons-left {
+  justify-content: flex-start;
+}
+
+.memory-buttons-right {
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.memory-buttons-right .slideshow-button {
+  font-size: 3rem;
+  margin-right: 0;
+  margin-left: 1.5rem;
+  padding: 0;
+  background-color: transparent;
+}
+
+.memory-buttons-right .slideshow-button-icon {
+  border-radius: 100%;
+  box-shadow: 0 1px 5px rgb(0, 0, 0, .1), 0 -1px 5px rgb(0, 0, 0, .1);
+}
+
+.memory-buttons-right .slideshow-button-icon:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  box-shadow: 0 1px 10px rgb(0, 0, 0, .1), 0 -1px 10px rgb(0, 0, 0, .1);
+}
+
+.memory-buttons-right .slideshow-button-icon:active {
+  transform: scale(1);
+  box-shadow: 0 1px 5px rgb(0, 0, 0, .1), 0 -1px 5px rgb(0, 0, 0, .1);
 }
 
 .memory-button {
@@ -370,7 +534,56 @@ h2 {
   margin-right: .5rem;
 }
 
-@media screen and (max-width: 715px) {
+.new-memory-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 4rem;
+}
+
+.new-memory-button {
+  font-size: 2rem;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 5px;
+  color: var(--color);
+  background: var(--memory-background);
+  border: none;
+  box-shadow: 0 1px 5px rgb(0, 0, 0, .1), 0 -1px 5px rgb(0, 0, 0, .1);
+  transition: transform .15s, box-shadow .15s;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+}
+
+
+.new-memory-button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  box-shadow: 0 1px 10px rgb(0, 0, 0, .1), 0 -1px 10px rgb(0, 0, 0, .1);
+}
+
+.new-memory-button:active {
+  transform: scale(1);
+  box-shadow: 0 1px 5px rgb(0, 0, 0, .1), 0 -1px 5px rgb(0, 0, 0, .1);
+}
+
+.new-memory-icon {
+  margin-right: 1rem;
+}
+
+.delete-confirmation-text {
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 904px) {
+  #login-button {
+    margin-top: 3rem;
+  }
+}
+
+@media screen and (max-width: 850px) {
   :root {
     font-size: 2.2vw;
   }

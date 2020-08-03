@@ -1,20 +1,27 @@
 import React from 'react';
+import NavItem from './NavItem.js';
 import NavMenuToggle from './NavMenuToggle.js';
 import './main.css';
 
-export default function Navbar() {
+export default function Navbar({ isLoggedIn, logout }) {
   return (
     <div id="navbar" className="container">
       <div id="nav-left">
         <i id="logo" className="fas fa-brain"></i>
         <div>My Memories</div>
       </div>
-      <div id="nav-right">
-        <a href="#photo-slideshow-location" className="nav-item">photos</a>
-        <a href="#public-memories-location" className="nav-item">public</a>
-        <a href="#private-memories-location" className="nav-item">private</a>
-      </div>
-      <NavMenuToggle />
+        {isLoggedIn ?
+        <div id="nav-right">
+          <NavItem href={"#photo-slideshow-location"}>photos</NavItem>
+          <NavItem href={"#public-memories-location"}>public</NavItem>
+          <NavItem href={"#private-memories-location"}>private</NavItem>
+          <NavItem href={"#login-location"} handleClick={logout}>logout</NavItem>
+        </div> :
+        <div id="nav-right">
+          <NavItem href={"#login-location"}>login</NavItem>
+        </div>
+        }
+      <NavMenuToggle isLoggedIn={isLoggedIn} logout={logout} />
     </div>
   );
 }
